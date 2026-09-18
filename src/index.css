@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Afacad';
+  src: url('./assets/Afacad/Afacad-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Afacad';
+  src: url('./assets/Afacad/Afacad-Italic-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+}
+
+@keyframes content-arrive {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-arrive {
+  animation: content-arrive 1s ease-out forwards;
+}
+
+.animate-arrive-delay {
+  animation: content-arrive 1s ease-out 0.3s forwards;
+  opacity: 0;
+}
