@@ -54,9 +54,9 @@ const Foot = () => {
 
           {/* Brand */}
           <div className='flex flex-col gap-4'>
-            <h2 className='text-4xl font-extrabold tracking-widest text-orange-400 uppercase'>
-              Focal
-            </h2>
+            <a href='#' className='flex items-center w-fit'>
+              <img src='/Focal.png' alt='FOCAL' className='h-12 w-auto object-contain' />
+            </a>
             <p className='text-zinc-400 text-base leading-relaxed max-w-xs'>
               Handcrafted brews, warm ambience, and unforgettable moments — served one cup at a time.
             </p>
