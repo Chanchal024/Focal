@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import Home from './PAGES/Home'
 import Story from './PAGES/Story' 
-import Reserve from './PAGES/reserve' 
+import Reserve from './PAGES/Reserve'
 import Menu from './PAGES/Menu'
 import Contact from './PAGES/Contact'
 import Footer from './PAGES/Footer'
