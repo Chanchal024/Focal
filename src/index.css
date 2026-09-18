@@ -1,35 +1,49 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sans: 'Afacad', 'Fredoka', sans-serif;
+}
+
 @font-face {
   font-family: 'Afacad';
-  src: url('./assets/Afacad/Afacad-VariableFont_wght.ttf') format('truetype');
+  src: url('./assets/Afacad,Fredoka/Afacad/Afacad-VariableFont_wght.ttf') format('truetype'),
+       url('./assets/Afacad/Afacad-VariableFont_wght.ttf') format('truetype');
   font-weight: 100 900;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Afacad';
-  src: url('./assets/Afacad/Afacad-Italic-VariableFont_wght.ttf') format('truetype');
+  src: url('./assets/Afacad,Fredoka/Afacad/Afacad-Italic-VariableFont_wght.ttf') format('truetype'),
+       url('./assets/Afacad/Afacad-Italic-VariableFont_wght.ttf') format('truetype');
   font-weight: 100 900;
   font-style: italic;
 }
 
-@keyframes content-arrive {
-  0% {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@font-face {
+  font-family: 'Fredoka';
+  src: url('./assets/Afacad,Fredoka/Fredoka/Fredoka-VariableFont_wdth,wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
 }
 
-.animate-arrive {
-  animation: content-arrive 1s ease-out forwards;
+html, body, #root, button, input, select, textarea {
+  font-family: 'Afacad', 'Fredoka', sans-serif;
 }
 
-.animate-arrive-delay {
-  animation: content-arrive 1s ease-out 0.3s forwards;
-  opacity: 0;
+/* GSAP sets initial opacity/transform — this prevents a flash of
+   unstyled content on elements that GSAP animates on page load */
+#navbar,
+.hero-title,
+.hero-sub,
+.hero-media {
+  will-change: transform, opacity;
+}
+
+/* Smooth GPU-accelerated transforms for scroll-animated elements */
+.s1-card,
+.s2-image,
+.s2-content,
+.menu-card {
+  will-change: transform, opacity;
 }

@@ -4,157 +4,185 @@ import Lenis from 'lenis'
 
 gsap.registerPlugin(ScrollTrigger)
 
-// ─── Helpers ──────────────────────────────────────────────────────────────────
+// ─── Single professional easing used everywhere ────────────────────────────────
+const E = 'power4.out'
 
-/**
- * Fade-up reveal for a list of selectors.
- * Each element animates independently as it enters the viewport.
- */
-function fadeUp(selector, vars = {}) {
-  gsap.utils.toArray(selector).forEach((el) => {
+// ─── Reveal: fade up + scale ──────────────────────────────────────────────────
+function reveal(selector, { y = 40, duration = 1, delay = 0, stagger = 0, ...rest } = {}) {
+  gsap.utils.toArray(selector).forEach((el, i) => {
     gsap.fromTo(
       el,
-      { opacity: 0, y: 48 },
+      { opacity: 0, y, scale: 0.97 },
       {
-        opacity: 1,
-        y: 0,
-        duration: vars.duration ?? 0.9,
-        ease: vars.ease ?? 'power3.out',
+        opacity: 1, y: 0, scale: 1,
+        duration,
+        ease: E,
+        delay: delay + i * stagger,
         scrollTrigger: {
           trigger: el,
           start: 'top 88%',
-          toggleActions: 'play none none none',
+          end: 'top 20%',
+          toggleActions: 'play none none reverse',
+          ...rest.scrollTrigger,
         },
-        ...vars,
       }
     )
   })
 }
 
-/**
- * Slide in from left or right.
- */
-function slideIn(selector, fromX = -60, vars = {}) {
+// ─── Slide: horizontal enter ───────────────────────────────────────────────────
+function slide(selector, fromX, { duration = 1.1, ...rest } = {}) {
   gsap.utils.toArray(selector).forEach((el) => {
     gsap.fromTo(
       el,
       { opacity: 0, x: fromX },
       {
-        opacity: 1,
-        x: 0,
-        duration: vars.duration ?? 1,
-        ease: 'power3.out',
+        opacity: 1, x: 0,
+        duration,
+        ease: E,
         scrollTrigger: {
           trigger: el,
-          start: 'top 88%',
-          toggleActions: 'play none none none',
+          start: 'top 85%',
+          end: 'top 15%',
+          toggleActions: 'play none none reverse',
+          ...rest.scrollTrigger,
         },
-        ...vars,
       }
     )
   })
 }
 
-// ─── Main export ──────────────────────────────────────────────────────────────
+// ─── Batch: staggered group reveal ────────────────────────────────────────────
+function batch(selector, { y = 50, stagger = 0.12, duration = 0.95, start = 'top 87%' } = {}) {
+  // Set initial state so there's no flash before ScrollTrigger fires
+  gsap.set(selector, { opacity: 0, y, scale: 0.96 })
 
+  ScrollTrigger.batch(selector, {
+    onEnter: (els) =>
+      gsap.to(els, {
+        opacity: 1, y: 0, scale: 1,
+        stagger, duration, ease: E,
+        overwrite: true,
+      }),
+    onLeaveBack: (els) =>
+      gsap.to(els, {
+        opacity: 0, y, scale: 0.96,
+        stagger: stagger * 0.5, duration: 0.4,
+        ease: 'power2.in',
+        overwrite: true,
+      }),
+    start,
+    batchMax: 3,
+  })
+}
+
+// ─── Main ─────────────────────────────────────────────────────────────────────
 export function initScroll() {
-  // ── 1. Lenis smooth scroll ─────────────────────────────────────────────────
+
+  // 1. Lenis smooth scroll
   const lenis = new Lenis({
     duration: 1.4,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     smoothWheel: true,
-    wheelMultiplier: 0.85,
+    wheelMultiplier: 0.8,
     touchMultiplier: 1.5,
   })
 
-  // Keep a reference for cleanup
   const tickerFn = (time) => lenis.raf(time * 1000)
   gsap.ticker.add(tickerFn)
   gsap.ticker.lagSmoothing(0)
 
-  // ── 2. ScrollTrigger global defaults ──────────────────────────────────────
-  ScrollTrigger.defaults({ once: true })
+  // Keep ScrollTrigger in sync with Lenis
+  lenis.on('scroll', ScrollTrigger.update)
 
-  // ── 3. HOME section ───────────────────────────────────────────────────────
-  // Home hero text uses animate-arrive CSS — GSAP does NOT touch these
-  // to avoid conflicting with the navbar's own built-in CSS animation.
-
-  // S1 icon-card columns
-  gsap.utils.toArray('#story .flex-col, .flex-col.items-center.gap-2').forEach((el, i) => {
-    gsap.fromTo(
-      el,
-      { opacity: 0, y: 55 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.85,
-        ease: 'power3.out',
-        delay: i * 0.12,
-        scrollTrigger: { trigger: el, start: 'top 88%' },
-      }
-    )
+  // 2. Page-load: Navbar slides in from top (no ScrollTrigger needed)
+  gsap.set('#navbar', { opacity: 0, y: -24 })
+  gsap.to('#navbar', {
+    opacity: 1, y: 0,
+    duration: 1.1, ease: E,
+    delay: 0.2,
+    clearProps: 'transform', // clean up after done so position:absolute works
   })
 
-  // S2 — image slide in from left, text from right
-  slideIn('.s2-image', -70)
-  slideIn('.s2-content', 70)
+  // 3. Page-load: Hero headline + subtitle stagger
+  gsap.set('.hero-title', { opacity: 0, y: 32 })
+  gsap.set('.hero-sub', { opacity: 0, y: 24 })
+  gsap.set('.hero-media', { opacity: 0, y: 16 })
 
-  // Generic text inside story
-  fadeUp('#story h2, #story h3', { duration: 1 })
-  fadeUp('#story p', { duration: 0.85 })
+  gsap.to('.hero-title', { opacity: 1, y: 0, duration: 1.1, ease: E, delay: 0.45 })
+  gsap.to('.hero-sub',   { opacity: 1, y: 0, duration: 1.0, ease: E, delay: 0.65 })
+  gsap.to('.hero-media', { opacity: 1, y: 0, duration: 0.9, ease: E, delay: 0.85 })
 
-  // ── 5. RESERVE section ────────────────────────────────────────────────────
-  fadeUp('#reserve h2, #reserve h3', { duration: 1 })
-  fadeUp('#reserve p', { duration: 0.85 })
+  // 4. Story — S1 info cards (3-column stagger)
+  batch('.s1-card', { y: 45, stagger: 0.15, duration: 1.0, start: 'top 85%' })
+
+  // 5. Story — S2 image + content slide from sides
+  slide('.s2-image', -70, { duration: 1.15 })
+  slide('.s2-content', 70, { duration: 1.15 })
+
+  // 6. Story text
+  reveal('#story h3', { duration: 1.1, y: 30 })
+  reveal('#story p',  { duration: 0.9, y: 24, stagger: 0.06 })
+
+  // 7. Reserve section
+  reveal('#reserve h2', { duration: 1.1 })
+  reveal('#reserve p',  { duration: 0.9, y: 24 })
   gsap.utils.toArray('#reserve button').forEach((el) => {
     gsap.fromTo(
       el,
-      { opacity: 0, scale: 0.88 },
+      { opacity: 0, scale: 0.82, y: 10 },
       {
-        opacity: 1,
-        scale: 1,
-        duration: 0.65,
-        ease: 'back.out(1.6)',
-        scrollTrigger: { trigger: el, start: 'top 90%' },
+        opacity: 1, scale: 1, y: 0,
+        duration: 0.75, ease: 'back.out(1.5)',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 90%',
+          end: 'top 25%',
+          toggleActions: 'play none none reverse',
+        },
       }
     )
   })
 
-  // ── 6. MENU section ───────────────────────────────────────────────────────
-  // catagories.jsx already uses IntersectionObserver — we ONLY animate the
-  // section header (OUR MENU title) with GSAP to complement it.
-  fadeUp('#menu h2', { duration: 1.1 })
-  fadeUp('#menu > section > div > div:first-child p', { duration: 0.9 })
+  // 8. Menu section header
+  reveal('#menu h2', { duration: 1.1 })
+  reveal('#menu > section > div > div:first-child p', { y: 24, duration: 0.9 })
 
-  // ── 7. CONTACT section ────────────────────────────────────────────────────
-  fadeUp('#contact h2', { duration: 1 })
-  fadeUp('#contact p.mt-3', { duration: 0.85 })
+  // 9. Menu cards — 3-column batch stagger
+  batch('.menu-card', { y: 55, stagger: 0.11, duration: 1.0, start: 'top 88%' })
 
-  // The two main columns (info card + form card) slide in from sides
-  slideIn('#contact .lg\\:col-span-5', -65, { duration: 1 })
-  slideIn('#contact .lg\\:col-span-7', 65, { duration: 1 })
+  // 10. Contact section
+  reveal('#contact h2',    { duration: 1.0 })
+  reveal('#contact p.mt-3', { y: 24, duration: 0.88 })
+  slide('#contact .lg\\:col-span-5', -65, { duration: 1.1 })
+  slide('#contact .lg\\:col-span-7',  65, { duration: 1.1 })
 
-  // ── 8. FOOTER ─────────────────────────────────────────────────────────────
+  // 11. Footer
   gsap.fromTo(
     'footer',
-    { opacity: 0, y: 35 },
+    { opacity: 0, y: 40 },
     {
-      opacity: 1,
-      y: 0,
-      duration: 1,
-      ease: 'power2.out',
-      scrollTrigger: { trigger: 'footer', start: 'top 92%' },
+      opacity: 1, y: 0,
+      duration: 1.0, ease: E,
+      scrollTrigger: {
+        trigger: 'footer',
+        start: 'top 90%',
+        end: 'top 30%',
+        toggleActions: 'play none none reverse',
+      },
     }
   )
 
-  // Footer inner columns staggered
+  gsap.set('footer .grid > div', { opacity: 0, y: 32 })
   ScrollTrigger.batch('footer .grid > div', {
-    onEnter: (batch) =>
-      gsap.fromTo(batch, { opacity: 0, y: 40 }, { opacity: 1, y: 0, stagger: 0.15, duration: 0.8, ease: 'power3.out' }),
-    start: 'top 90%',
+    onEnter: (els) =>
+      gsap.to(els, { opacity: 1, y: 0, stagger: 0.13, duration: 0.85, ease: E, overwrite: true }),
+    onLeaveBack: (els) =>
+      gsap.to(els, { opacity: 0, y: 32, stagger: 0.07, duration: 0.4, ease: 'power2.in', overwrite: true }),
+    start: 'top 92%',
+    batchMax: 4,
   })
 
-  // ── Return cleanup handle ──────────────────────────────────────────────────
   return { lenis, tickerFn }
 }
 
