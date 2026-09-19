@@ -2,6 +2,8 @@
 
 @theme {
   --font-sans: 'Afacad', 'Fredoka', sans-serif;
+  --font-fredoka: 'Fredoka', sans-serif;
+  --font-afacad: 'Afacad', sans-serif;
 }
 
 @font-face {

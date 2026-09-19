@@ -5,6 +5,8 @@ import Reserve from './PAGES/Reserve'
 import Menu from './PAGES/Menu'
 import Contact from './PAGES/Contact'
 import Footer from './PAGES/Footer'
+import Experience from './PAGES/Experience'
+import Review from './PAGES/Review'
 import { initScroll, cleanupScroll } from './utils/initScroll'
 
 const App = () => {
@@ -18,8 +20,10 @@ const App = () => {
       <Home/>
       <Story/>
       <Reserve/>
+      <Experience/>
       <Menu/>
       <Contact/>
+      <Review/>
       <Footer/>
     </div>
   )

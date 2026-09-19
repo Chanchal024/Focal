@@ -11,7 +11,7 @@ const S2 = () => {
           <img
             src='/DSC06860.JPG'
             alt='Our café'
-            className='w-full h-[800px] object-cover rounded-3xl'
+            className='w-full h-[600px] object-cover rounded-3xl'
             style={{
               maskImage: 'linear-gradient(to right, black 50%, transparent 100%)',
               WebkitMaskImage: 'linear-gradient(to right, black 50%, transparent 100%)',
@@ -31,9 +31,6 @@ const S2 = () => {
           <button className='bg-orange-400 text-white px-4 py-2 rounded-xl hover:bg-orange-500 transition-colors'>
             Explore Our Menu
           </button>
-          <p className='text-2xl font-bold mt-5'>
-            Come for the coffee. Stay for the moments. Leave with a memory.
-          </p>
         </div>
 
       </div>
