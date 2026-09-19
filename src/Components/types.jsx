@@ -144,7 +144,7 @@ const Types = () => {
             <span className='text-orange-500'>A feeling you carry with you.</span>
           </h2>
           {/* Quick Metrics Bar */}
-          <div className='grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mt-10 w-full max-w-4xl p-6 bg-white/80 backdrop-blur-md rounded-2xl border border-zinc-200/80 shadow-sm'>
+          <div className='metrics-bar grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mt-10 w-full max-w-4xl p-6 bg-white/80 backdrop-blur-md rounded-2xl border border-zinc-200/80 shadow-sm'>
             <div className='text-center'>
               <div className='text-3xl md:text-4xl font-extrabold text-orange-500 flex items-center justify-center gap-1'>
                 4.9 <Star size={22} className='fill-orange-400 text-orange-400' />
@@ -190,7 +190,7 @@ const Types = () => {
             return (
               <div
                 key={item.id}
-                className='group relative bg-white rounded-3xl overflow-hidden border border-zinc-200/90 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col hover:-translate-y-1.5'
+                className='experience-card group relative bg-white rounded-3xl overflow-hidden border border-zinc-200/90 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col hover:-translate-y-1.5'
               >
                 {/* Image Container with dynamic hover zoom */}
                 <div className='relative h-60 w-full overflow-hidden bg-zinc-100'>
@@ -260,7 +260,7 @@ const Types = () => {
               return (
                 <div
                   key={idx}
-                  className='p-6 rounded-2xl bg-stone-50 border border-zinc-100 hover:border-orange-200 hover:bg-orange-50/30 transition-all duration-300 flex flex-col items-start'
+                  className='sensory-card p-6 rounded-2xl bg-stone-50 border border-zinc-100 hover:border-orange-200 hover:bg-orange-50/30 transition-all duration-300 flex flex-col items-start'
                 >
                   <div className='w-12 h-12 rounded-xl bg-orange-500/10 text-orange-500 flex items-center justify-center mb-4'>
                     <SIcon size={24} />
@@ -274,7 +274,7 @@ const Types = () => {
         </div>
 
         {/* Ambient Guest Quote Spotlight */}
-        <div className='mt-16 p-8 md:p-12 rounded-3xl bg-zinc-900 text-white relative overflow-hidden shadow-xl'>
+        <div className='experience-spotlight mt-16 p-8 md:p-12 rounded-3xl bg-zinc-900 text-white relative overflow-hidden shadow-xl'>
           <div
             className='absolute -right-10 -bottom-10 w-80 h-80 bg-orange-500/20 rounded-full blur-3xl pointer-events-none'
           />

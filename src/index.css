@@ -46,6 +46,10 @@ html, body, #root, button, input, select, textarea {
 .s1-card,
 .s2-image,
 .s2-content,
-.menu-card {
+.menu-card,
+.experience-card,
+.sensory-card,
+.metrics-bar,
+.experience-spotlight {
   will-change: transform, opacity;
 }
