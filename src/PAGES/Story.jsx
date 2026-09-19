@@ -4,7 +4,7 @@ import S2 from '../Components/s2'
 
 const Story = () => {
   return (
-    <div className='relative w-full overflow-visible'>
+    <div id='about' className='relative w-full overflow-visible'>
        <S1/>   
        <S2/>
     </div>

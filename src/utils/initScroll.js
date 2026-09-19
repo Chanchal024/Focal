@@ -56,6 +56,9 @@ function slide(selector, fromX, { duration = 0.85, start = 'top 88%', ...rest } 
 
 // ─── Batch: Crisp One-by-One sequential card appearance ──────────────────────
 function batch(selector, { y = 30, stagger = 0.12, duration = 0.75, start = 'top 92%', batchMax = 3 } = {}) {
+  const elements = gsap.utils.toArray(selector)
+  if (!elements || elements.length === 0) return
+
   gsap.set(selector, { opacity: 0, y, scale: 0.98 })
 
   ScrollTrigger.batch(selector, {
@@ -238,6 +241,29 @@ export function initScroll() {
 
   // Synchronize layout calculations with Lenis
   ScrollTrigger.refresh()
+
+  // 10. Smooth glide to section when opened with a hash in a new tab
+  if (typeof window !== 'undefined' && window.location.hash && window.location.hash !== '#' && window.location.hash !== '#home') {
+    const rawHash = window.location.hash
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual'
+    }
+    window.scrollTo(0, 0)
+    setTimeout(() => {
+      try {
+        const target = document.querySelector(rawHash)
+        if (target) {
+          lenis.scrollTo(target, {
+            offset: -20,
+            duration: 1.4,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          })
+        }
+      } catch {
+        // Fallback for invalid selectors
+      }
+    }, 280)
+  }
 
   return { lenis, tickerFn }
 }

@@ -6,7 +6,7 @@ import Media from '../Components/media'
 
 export const Home = () => {
   return (
-    <div className='relative w-full h-screen overflow-hidden rounded-[2rem]'>
+    <div id='home' className='relative w-full h-screen overflow-hidden rounded-[2rem]'>
         <Box/>  
         <Nav/>
         <Content/>
