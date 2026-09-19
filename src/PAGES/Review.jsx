@@ -3,7 +3,7 @@ import Feedback from '../Components/feedback'
 
 const Review = () => {
   return (
-    <div className='w-full h-screen bg-white'>
+    <div className='w-full min-h-screen bg-white'>
         <Feedback/>
     </div>
   )

@@ -2,7 +2,7 @@ import React from 'react'
 
 const Media = () => {
   return (
-    <div className='hero-media absolute bottom-10 right-0 -translate-x-1/2 flex items-center gap-6 rounded-full border border-white/20 bg-white/10 px-8 py-4 shadow-[0_8px_32px_rgba(0,0,0,0.25)] backdrop-blur-xl'>
+    <div className='hero-media absolute bottom-6 right-6 md:bottom-10 md:right-10 flex items-center gap-4 md:gap-6 rounded-full border border-white/20 bg-white/10 px-5 py-2.5 md:px-8 md:py-4 shadow-[0_8px_32px_rgba(0,0,0,0.25)] backdrop-blur-xl z-20'>
 
       {/* WhatsApp */}
       <a href="#" className='text-white transition-colors duration-300 hover:text-green-400'>

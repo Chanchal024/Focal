@@ -129,7 +129,7 @@ const Types = () => {
   return (
     <section
       id='Experience'
-      className='relative w-full py-20 px-6 md:px-12 lg:px-20 bg-white text-zinc-900 rounded-[2.5rem] overflow-hidden my-8'
+      className='relative w-full py-12 md:py-20 px-4 sm:px-8 md:px-12 lg:px-20 bg-white text-zinc-900 rounded-[2rem] md:rounded-[2.5rem] overflow-hidden my-4 md:my-8'
       style={{ fontFamily: "'Afacad', sans-serif" }}
     >
       {/* Subtle decorative background gradient circles */}
@@ -138,29 +138,29 @@ const Types = () => {
 
       <div className='relative z-10 max-w-7xl mx-auto'>
         {/* Section Header */}
-        <div className='flex flex-col items-center text-center mb-16'>
-          <h2 className='text-4xl md:text-6xl font-extrabold tracking-tight text-zinc-900 max-w-3xl leading-tight'>
+        <div className='flex flex-col items-center text-center mb-10 md:mb-16'>
+          <h2 className='text-3xl sm:text-4xl md:text-6xl font-extrabold tracking-tight text-zinc-900 max-w-3xl leading-tight'>
             More than just a cup. <br className='hidden md:inline' />
             <span className='text-orange-500'>A feeling you carry with you.</span>
           </h2>
           {/* Quick Metrics Bar */}
-          <div className='metrics-bar grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mt-10 w-full max-w-4xl p-6 bg-white/80 backdrop-blur-md rounded-2xl border border-zinc-200/80 shadow-sm'>
+          <div className='metrics-bar grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-8 mt-8 md:mt-10 w-full max-w-4xl p-4 sm:p-6 bg-white/80 backdrop-blur-md rounded-2xl border border-zinc-200/80 shadow-sm'>
             <div className='text-center'>
-              <div className='text-3xl md:text-4xl font-extrabold text-orange-500 flex items-center justify-center gap-1'>
-                4.9 <Star size={22} className='fill-orange-400 text-orange-400' />
+              <div className='text-2xl sm:text-3xl md:text-4xl font-extrabold text-orange-500 flex items-center justify-center gap-1'>
+                4.9 <Star size={20} className='fill-orange-400 text-orange-400' />
               </div>
               <p className='text-xs md:text-sm font-semibold text-zinc-500 uppercase tracking-wider mt-1'>Guest Rating</p>
             </div>
             <div className='text-center'>
-              <div className='text-3xl md:text-4xl font-extrabold text-zinc-900'>100%</div>
+              <div className='text-2xl sm:text-3xl md:text-4xl font-extrabold text-zinc-900'>100%</div>
               <p className='text-xs md:text-sm font-semibold text-zinc-500 uppercase tracking-wider mt-1'>Single-Origin Beans</p>
             </div>
             <div className='text-center'>
-              <div className='text-3xl md:text-4xl font-extrabold text-zinc-900'>Daily</div>
+              <div className='text-2xl sm:text-3xl md:text-4xl font-extrabold text-zinc-900'>Daily</div>
               <p className='text-xs md:text-sm font-semibold text-zinc-500 uppercase tracking-wider mt-1'>Oven-Fresh Bakes</p>
             </div>
             <div className='text-center'>
-              <div className='text-3xl md:text-4xl font-extrabold text-zinc-900'>Gigabit</div>
+              <div className='text-2xl sm:text-3xl md:text-4xl font-extrabold text-zinc-900'>Gigabit</div>
               <p className='text-xs md:text-sm font-semibold text-zinc-500 uppercase tracking-wider mt-1'>High-Speed Wi-Fi</p>
             </div>
           </div>
@@ -274,7 +274,7 @@ const Types = () => {
         </div>
 
         {/* Ambient Guest Quote Spotlight */}
-        <div className='experience-spotlight mt-16 p-8 md:p-12 rounded-3xl bg-zinc-900 text-white relative overflow-hidden shadow-xl'>
+        <div className='experience-spotlight mt-12 md:mt-16 p-6 sm:p-8 md:p-12 rounded-3xl bg-zinc-900 text-white relative overflow-hidden shadow-xl'>
           <div
             className='absolute -right-10 -bottom-10 w-80 h-80 bg-orange-500/20 rounded-full blur-3xl pointer-events-none'
           />
@@ -286,7 +286,7 @@ const Types = () => {
                 ))}
                 <span className='ml-2 text-sm text-zinc-400 font-medium'>Verified Guest Review</span>
               </div>
-              <p className='text-xl md:text-2xl font-light italic leading-relaxed text-zinc-100'>
+              <p className='text-lg sm:text-xl md:text-2xl font-light italic leading-relaxed text-zinc-100'>
                 “Focal has redefined what a morning coffee run feels like. The aroma when you walk in, the kindness of the baristas, and that irresistible warm almond croissant make it the best part of my day.”
               </p>
               <div className='mt-4 flex items-center gap-3'>

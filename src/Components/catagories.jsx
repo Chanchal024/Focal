@@ -135,17 +135,17 @@ const Catagories = () => {
 
     return (
         <section
-            className='relative w-full min-h-screen bg-white text-zinc-900 px-6 pt-8 pb-20 md:px-12 lg:px-20'
+            className='relative w-full min-h-screen bg-white text-zinc-900 px-4 sm:px-8 md:px-12 lg:px-20 pt-8 pb-16 md:pb-20'
             style={{ fontFamily: "'Afacad', sans-serif" }}
         >
             <div className='relative z-10 max-w-7xl mx-auto'>
 
                 {/* Section Header — GSAP reveal('#menu h2') targets this */}
-                <div className='flex flex-col items-center text-center mb-16'>
-                    <h2 className='text-orange-400 text-5xl md:text-6xl font-extrabold tracking-widest mb-3 uppercase'>
+                <div className='flex flex-col items-center text-center mb-10 md:mb-16'>
+                    <h2 className='text-orange-400 text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-widest mb-3 uppercase'>
                         OUR MENU
                     </h2>
-                    <p className='mt-2 text-lg md:text-2xl text-zinc-600 max-w-2xl leading-relaxed font-medium'>
+                    <p className='mt-2 text-base sm:text-lg md:text-2xl text-zinc-600 max-w-2xl leading-relaxed font-medium'>
                         Every roast, pour, and froth is handcrafted with uncompromised precision and passion.
                     </p>
                 </div>

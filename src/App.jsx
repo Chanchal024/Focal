@@ -16,7 +16,7 @@ const App = () => {
   }, [])
 
   return (
-    <div className='relative w-full min-h-screen overflow-x-hidden p-5'>
+    <div className='relative w-full min-h-screen overflow-x-hidden p-2 sm:p-4 md:p-5'>
       <Home/>
       <Story/>
       <Reserve/>
