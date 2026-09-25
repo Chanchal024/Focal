@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import Nav from './Components/nav'
 import Home from './PAGES/Home'
-import Story from './PAGES/Story' 
+import Story from './PAGES/Story'
+import About from './PAGES/About'
 import Reserve from './PAGES/Reserve'
 import Menu from './PAGES/Menu'
 import Contact from './PAGES/Contact'
@@ -67,7 +68,8 @@ const App = () => {
 
         {/* ONLY the clicked section's content is displayed */}
         <main className='w-full'>
-          {(section === 'about' || section === 'story') && <Story />}
+          {section === 'about' && <About />}
+          {section === 'story' && <Story />}
           {section === 'experience' && <Experience />}
           {section === 'menu' && <Menu />}
           {section === 'contact' && <Contact />}
@@ -84,6 +86,7 @@ const App = () => {
   return (
     <div className='relative w-full min-h-screen overflow-x-hidden p-2 sm:p-4 md:p-5'>
       <Home/>
+      <About/>
       <Story/>
       <Reserve/>
       <Experience/>

@@ -117,7 +117,19 @@ export function initScroll() {
   gsap.to('.hero-sub',   { opacity: 1, y: 0, duration: 0.85, ease: E, delay: 0.5 })
   gsap.to('.hero-media', { opacity: 1, y: 0, duration: 0.8, ease: E, delay: 0.65 })
 
-  // 3. PAGE 2: Story Section (Cards appear one by one)
+  // 3. PAGE 2A: About Us Section
+  reveal('#about .about-header', { duration: 0.85, y: 28, start: 'top 92%' })
+  reveal('#about .about-title', { duration: 0.9, y: 24, start: 'top 92%' })
+  reveal('#about .about-desc', { duration: 0.8, y: 18, delay: 0.08, start: 'top 92%' })
+  slide('#about .about-visual', -45, { duration: 0.9, start: 'top 88%' })
+  slide('#about .about-content', 45, { duration: 0.9, start: 'top 88%' })
+  reveal('#about .about-badge-float-1', { duration: 0.7, y: 18, delay: 0.25, start: 'top 88%' })
+  reveal('#about .about-badge-float-2', { duration: 0.7, y: 18, delay: 0.35, start: 'top 88%' })
+  batch('#about .about-card', { y: 28, stagger: 0.11, duration: 0.75, start: 'top 92%', batchMax: 4 })
+  reveal('#about .about-metrics', { duration: 0.85, y: 26, start: 'top 90%' })
+  batch('#about .about-stat', { y: 20, stagger: 0.1, duration: 0.7, start: 'top 92%', batchMax: 4 })
+
+  // 3. PAGE 2B: Story Section (Cards appear one by one)
   batch('.s1-card', { y: 28, stagger: 0.12, duration: 0.75, start: 'top 90%', batchMax: 3 })
   slide('.s2-image', -40, { duration: 0.85 })
   slide('.s2-content', 40, { duration: 0.85 })

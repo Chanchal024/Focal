@@ -92,7 +92,7 @@ const Navbar = () => {
         if (linkId === "home") {
             return !activeSection || activeSection === "home";
         }
-        return activeSection === linkId || (linkId === "about" && activeSection === "story");
+        return activeSection === linkId || (linkId === 'about' && activeSection === 'about');
     };
 
     return (
