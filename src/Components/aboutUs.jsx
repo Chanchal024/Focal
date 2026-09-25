@@ -66,11 +66,6 @@ const AboutUs = () => {
 
         {/* Section Header */}
         <div className='about-header text-center max-w-3xl mx-auto mb-14 sm:mb-18 md:mb-20'>
-          <div className='inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-100/80 border border-orange-200/80 text-orange-700 text-xs sm:text-sm font-bold tracking-wider uppercase mb-4 shadow-xs'>
-            <Sparkles className='w-3.5 h-3.5 text-orange-500' />
-            <span>About Focal Café</span>
-          </div>
-
           <h2
             className='about-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-neutral-900 tracking-tight leading-tight mb-5'
             style={{ fontFamily: "'Playfair Display', serif" }}
