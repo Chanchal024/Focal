@@ -4,6 +4,7 @@ import React from 'react'
 const S2 = () => {
   return (
     <div className='w-full min-h-screen flex items-center justify-center px-4 sm:px-8 md:px-10 py-10 relative'>
+      <style>{`@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap');`}</style>
       <div className='flex flex-col lg:flex-row items-center w-full max-w-6xl gap-8 lg:gap-12'>
 
         {/* s2-image — GSAP slides in from left */}
@@ -30,16 +31,32 @@ const S2 = () => {
 
           {/* Signatures in horizontal format */}
           <div className='mt-8 sm:mt-10 flex items-center justify-center lg:justify-start gap-6 sm:gap-10'>
-            <img
-              src='/sig1 (1).png'
-              alt='Founder Signature 1'
-              className='h-12 sm:h-16 md:h-20 w-auto object-contain max-w-[130px] sm:max-w-[170px]'
-            />
-            <img
-              src='/sig1 (2).png'
-              alt='Founder Signature 2'
-              className='h-12 sm:h-16 md:h-20 w-auto object-contain max-w-[130px] sm:max-w-[170px]'
-            />
+            <div className='flex flex-col items-center lg:items-start gap-1'>
+              <h4
+                className='text-2xl sm:text-3xl md:text-3xl font-extrabold text-neutral-900 tracking-wide'
+                style={{ fontFamily: "'Playfair Display', 'Cormorant Garamond', 'Georgia', serif" }}
+              >
+                Ethan Cole
+              </h4>
+              <img
+                src='/sig1 (1).png'
+                alt='Founder Signature 1'
+                className='h-12 sm:h-16 md:h-20 w-auto object-contain max-w-[130px] sm:max-w-[170px]'
+              />
+            </div>
+            <div className='flex flex-col items-center lg:items-start gap-1'>
+              <h4
+                className='text-2xl sm:text-3xl md:text-3xl font-extrabold text-neutral-900 tracking-wide'
+                style={{ fontFamily: "'Playfair Display', 'Cormorant Garamond', 'Georgia', serif" }}
+              >
+                Oliver Vance
+              </h4>
+              <img
+                src='/sig1 (2).png'
+                alt='Founder Signature 2'
+                className='h-12 sm:h-16 md:h-20 w-auto object-contain max-w-[130px] sm:max-w-[170px]'
+              />
+            </div>
           </div>
         </div>
 
