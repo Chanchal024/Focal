@@ -27,6 +27,20 @@ const S2 = () => {
           <a href='#Menu' className='inline-block bg-orange-400 text-white px-6 py-3 rounded-xl hover:bg-orange-500 transition-colors font-bold text-base shadow-sm'>
             Explore Our Menu
           </a>
+
+          {/* Signatures in horizontal format */}
+          <div className='mt-8 sm:mt-10 flex items-center justify-center lg:justify-start gap-6 sm:gap-10'>
+            <img
+              src='/sig1 (1).png'
+              alt='Founder Signature 1'
+              className='h-12 sm:h-16 md:h-20 w-auto object-contain max-w-[130px] sm:max-w-[170px]'
+            />
+            <img
+              src='/sig1 (2).png'
+              alt='Founder Signature 2'
+              className='h-12 sm:h-16 md:h-20 w-auto object-contain max-w-[130px] sm:max-w-[170px]'
+            />
+          </div>
         </div>
 
       </div>
